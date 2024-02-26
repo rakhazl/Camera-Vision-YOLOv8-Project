@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clip Roof Detection</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .video-container {
+            width: 45%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .label-container {
+            width: 45%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .video-stream {
+            width: 100%;
+        }
+
+        .fullscreen {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: #b1acac;
+        }
+        .centered-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="fullscreen">
+        <div style="width: 5000px; height: 122px; left: -236px; top: 13px; position: absolute; background: #242e3b"></div>
+        <div style="left: 400px; top: 38px; position: absolute; color: white; font-size: 64px; font-family: 'Kantumruy'; font-weight: 400; word-wrap: break-word">POKAYOKE CLIP ROOF ITEM CHECK</div>
+        <img style="width: 161px; height: 88px; left: 60px; top: 24px; position: absolute" src="C:\clip-roof-toso\templates\logo-tmmin-new.png" />
+        <img style="width: 109px; height: 113px; left: 1700px; top: 16px; position: absolute" src="C:\clip-roof-toso\templates\logo-its.png" />
+        <!-- Kotak 1 = Kiri Atas -->
+        <img style="width: 640px; height: 360px; left: 54px; top: 173px; position: absolute; border: 8px black solid; backdrop-filter: blur(22.20px)" src="{{ capture_path }}" />
+        <!-- Kotak 2 = Kanan Bawah -->
+        <img style="width: 640px; height: 360px; left: 54px; top: 550px; position: absolute; border: 8px black solid; backdrop-filter: blur(22.20px)" src="{{ capture_path }}" />
+        <!-- Kotak 3 = Kiri Bawah -->
+        <img style="width: 640px; height: 360px; left: 1147px; top: 550px; position: absolute; border: 8px black solid; backdrop-filter: blur(22.20px)" src="{{ capture_path }}" />
+        <!-- Kotak 4 = Kiri Atas -->
+        <img style="width: 640px; height: 360px; left: 1147px; top: 173px; position: absolute; border: 8px black solid; backdrop-filter: blur(22.20px)" src="{{ capture_path }}" />
+    </div>
+</body>
+</html>

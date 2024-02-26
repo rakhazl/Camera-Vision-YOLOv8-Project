@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Object Detected</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .webcam-container {
+            display: flex;
+            justify-content: space-between;
+            width: 1200px;
+            margin-top: 20px;
+        }
+
+        .webcam {
+            width: 45%;
+            margin: 0;
+        }
+
+        .captured-frame {
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>No object detected</h1>
+        <div class="webcam-container">
+            <div class="webcam">
+                <h2>Camera 0</h2>
+                <img id="video_feed0" src="{{ url_for('video_feed0') }}" alt="Camera 0">
+            </div>
+            <div class="webcam">
+                <h2>Camera 1</h2>
+                <img id="video_feed1" src="{{ url_for('video_feed1') }}" alt="Camera 1">
+            </div>
+        </div>
+</body>
+</html>
