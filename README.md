@@ -4,13 +4,13 @@
 > I'm using python 3.10.11 here :snake:
 > [Python Download](https://www.python.org/downloads/).
 > *For tutorial install [click](https://www.youtube.com/watch?v=t3jhhAuGygs)*:eyes:
-
+$~$
 ## Step 1 : Install Virtual Environment
 ### 1. Make a _*Virtural Environment*_ in your computer
 ### 2. Open CMD and click <code>pip install venv</code>
         pip install venv
 
-###
+$~$
 ## Step 2 : Activate Virtual Environment
 ### 1. Choose your folder 
    ####     Example : 
@@ -27,7 +27,7 @@
         name_your_folder\Scripts\activate
 
 > [!TIP]
-> There issue <code> execution of scripts is disabled on this system</code>
+> There issue <code>execution of scripts is disabled on this system</code>
 
 ### 1. Press the <code>Windows</code> button and then type <code>PowerShell</code>
 ### 2. Click <code>Run as Administrator</code>
@@ -39,7 +39,7 @@
 ### 6. Close the powershell and try again like number 3 :hourglass:
 ### 5. If <code>(Name_Folder)C:\>Name_Folder></code>, venv active :rocket:
 
-
+$~$
 ## Step 3 : Clonning Program Exist
 
 ### 1. Go to [Repositories Camera Vision YOLOv8 Project](https://github.com/rakhazl/Camera-Vision-YOLOv8-Project)
@@ -56,29 +56,32 @@
 ### 5. And Click <code>Enter</code> :dizzy:
 
 ### And then... :sparkles: ![Congrats](https://github.com/rakhazl/Camera-Vision-YOLOv8-Project/blob/main/doc%20for%20tutor/step%203.png) 
-
+$~$
 ## Step 4 : Running Program 
-
-### _*There are 3 ways to Open Visual Studio Code*_
+$~~~~~~~~~~~$
+### _*There are 3 ways to Open Visual Studio Code*_ In this tutorial, the folder name is <code>clip-roof-toso</code>
+$~~~~~~~~~~~$
 ### *The First Way*
-### 1. Please direct to the folder link, like a picture ![]()
+### 1. Please direct to the folder link, like a picture ![](https://github.com/rakhazl/Camera-Vision-YOLOv8-Project/blob/main/doc%20for%20tutor/step%204.png)
 ### 2. Typing <code>cmd</code>
         cmd
+### ![](https://github.com/rakhazl/Camera-Vision-YOLOv8-Project/blob/main/doc%20for%20tutor/step%205.png)
 ### 3. Then the command prompt will open, and then typing <code>code .</code>
         code .
+### ![](https://github.com/rakhazl/Camera-Vision-YOLOv8-Project/blob/main/doc%20for%20tutor/step%206.png)
 ### 4. Then will open <code>Visual Studio Code</code>
-
+$~~~~~~~~~~~$
 ### *The Seccond Way*
 ### 1. From *Step 3 No. 5*, direct typing <code>code .</code>
         (Name_Folder)C:\>Name_Folder>code .
-### Like a picture below ![]()
-
+### Like a picture below ![](https://github.com/rakhazl/Camera-Vision-YOLOv8-Project/blob/main/doc%20for%20tutor/step%207.png)
+$~~~~~~~~~~~$
 ### *The Third Way*
-### 1. Open <code>Visual Studio Code</code>, Then the display will look like this ![]()
-### 2. Select the folder that was downloaded from GitHub earlier ![]()
-### 3. Yes, Correct... ![]()
-
-### . Install Library, Check your connection :signal_strength:
+### 1. Open <code>Visual Studio Code</code>, Then the display will look like this. Click <code>Open Folder</code> ![](https://github.com/rakhazl/Camera-Vision-YOLOv8-Project/blob/main/doc%20for%20tutor/step%208.png)
+### 2. Select the folder that was downloaded from GitHub earlier ![](https://github.com/rakhazl/Camera-Vision-YOLOv8-Project/blob/main/doc%20for%20tutor/step%209.png)
+### 3. Yes, Correct... ![](https://github.com/rakhazl/Camera-Vision-YOLOv8-Project/blob/main/doc%20for%20tutor/step%2010.png)
+$~~~~~~~~~~~$
+### If you want Install Library, Check your connection :signal_strength:
 ###        Go into the folder <code>cd</code> C:\Name_Folder 
         cd
 ###        next step 1, if C:\>Name_Folder>

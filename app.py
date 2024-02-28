@@ -1,5 +1,5 @@
 from ultralytics import YOLO
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from ultralytics.utils.plotting import Annotator, colors
 import cv2
 import os
@@ -8,30 +8,30 @@ import datetime
 import pytz
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder ="C:\\clip-roof-toso\\templates", static_folder ="C:\\clip-roof-toso\\static")
 
-model = YOLO("result_training") #file "best.pt" or path your file best.pt
+model = YOLO("best.pt")
 camera0 = cv2.VideoCapture("C:\Camera Roll\(3. Left Video - Fortuner 2.mp4")
 camera1 = cv2.VideoCapture("C:\Camera Roll\(4. Right Video - Fortuner 2.mp4")
 
-# Folder for saving capture
-capture_folder = "C:\clip-roof-toso\capture"
+# Folder untuk menyimpan capture
+capture_folder = "C:\clip-roof-toso\static\captures"
 
 capture_count = 1
 
-# Variable to mark whether the object has exceeded the coordinate limits or not
+# Variabel untuk menandai apakah objek sudah melewati batas koordinat atau belum
 object_passed_boundary0 = False
 object_passed_boundary1 = False
-# Function to ensure capturing occurs only once
+# Fungsi agar capture hanya 1 kali
 boundary2_crossed0 = False
 boundary2_crossed1 = False
-# Coordinate limits defined for camera 0
+# Batas koordinat yang di tentukan pada camera 0
 y_min_boundary1 = 553
 y_max_boundary1 = 621
 y_min_boundary2 = 801
 y_max_boundary2 = 870
 
-# Coordinate limits defined for camera 1
+# Batas koordinat yang di tentukan pada camera 1
 y_min_boundary3 = 553
 y_max_boundary3 = 621
 y_min_boundary4 = 801
@@ -54,15 +54,15 @@ def draw_label(frame, model, result):
 
                         print(box.xyxy)
 
-# Function to get the current date and time in the desired time zone
+# Fungsi untuk mendapatkan tanggal dan waktu saat ini dalam zona waktu yang diinginkan
 def get_current_time():
-        # Specify the desired time zone (Western Indonesian Time)
+        # Tentukan zona waktu yang diinginkan (Waktu Indonesia Barat)
         jakarta_timezone = pytz.timezone('Asia/Jakarta')
-        # Retrieve the current time in the Jakarta time zone
+        # Ambil waktu saat ini dalam zona waktu Jakarta
         current_time = datetime.datetime.now(jakarta_timezone)
         return current_time
 
-# Function to detect objects and capture if an object exceeds the coordinate limits on camera0
+# Fungsi untuk mendeteksi objek dan melakukan capture jika objek melewati batas koordinat pada camera0
 def detect_and_capture0(frame):
         global object_passed_boundary0
         global boundary2_crossed0
@@ -86,7 +86,7 @@ def detect_and_capture0(frame):
                                         object_passed_boundary0 = True
                                         capture_count += 1
                                 break
-        # Function to re-enable capture functionality after it has been disabled
+        # Fungsi untuk mengaktifkan fungsi capture kembali setelah dimatikan
         elif object_passed_boundary0 and not boundary2_crossed0:
                 for r in result:
                         if len(r.boxes) > 0:
@@ -103,7 +103,7 @@ def detect_and_capture0(frame):
                 boundary2_crossed0 = False
 
 
-# Function to detect objects and capture if an object exceeds the coordinate limits on camera1
+# Fungsi untuk mendeteksi objek dan melakukan capture jika objek melewati batas koordinat pada camera1
 def detect_and_capture1(frame):
         global object_passed_boundary1
         global boundary2_crossed1
@@ -127,7 +127,7 @@ def detect_and_capture1(frame):
                                         object_passed_boundary1 = True
                                         capture_count += 1
                                 break
-        # Function to re-enable capture functionality after it has been disabled
+        # Fungsi untuk mengaktifkan fungsi capture kembali setelah dimatikan
         elif object_passed_boundary1 and not boundary2_crossed1:
                 for r in result:
                         if len(r.boxes) > 0:
@@ -144,7 +144,7 @@ def detect_and_capture1(frame):
                 boundary2_crossed1 = False
 
 
-# Function to generate frames from camera0
+# Fungsi untuk menghasilkan frame dari camera0
 def generate_frames0():
         while True:
                 success0, frame0 = camera0.read()
@@ -156,7 +156,7 @@ def generate_frames0():
                 ret, buffer = cv2.imencode('.jpg', frame0)
                 frame0 = buffer.tobytes()
 
-# Function to generate frames from camera1
+# Fungsi untuk menghasilkan frame dari camera1
 def generate_frames1():
         while True:
                 success1, frame1 = camera1.read()
@@ -168,14 +168,31 @@ def generate_frames1():
                 ret, buffer = cv2.imencode('.jpg', frame1)
                 frame1 = buffer.tobytes()
 
+# Perbarui fungsi get_captures() untuk mengembalikan daftar file dalam format JSON
+@app.route('/captures')
+def get_captures():
+        capture_files = sorted(os.listdir(capture_folder))
+        return jsonify(captures=capture_files)
+
+
+# Perbarui fungsi index() untuk mengirimkan daftar capture ke template HTML
+@app.route('/')
+def index():
+        return render_template('index.html')
 
 if __name__ == '__main__':
-        print("File app.py telah berjalan.")
+        
         t1 = threading.Thread(target=generate_frames0)
         t2 = threading.Thread(target=generate_frames1)
-        
+
         t1.start()
         t2.start()
-        
+
+        app.run()
+        while True :
+                pass
+
         t1.join()
         t2.join()
+
+        print("File Running.")
