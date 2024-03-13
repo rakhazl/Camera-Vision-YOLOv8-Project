@@ -8,14 +8,14 @@ import datetime
 import pytz
 
 
-app = Flask(__name__, template_folder ="C:\\clip-roof-toso\\templates", static_folder ="C:\\clip-roof-toso\\static")
+app = Flask(__name__, template_folder ="\\Path_templates", static_folder ="\\Path_static")
 
 model = YOLO("best.pt")
-camera0 = cv2.VideoCapture("C:\Camera Roll\(3. Left Video - Fortuner 2.mp4")
-camera1 = cv2.VideoCapture("C:\Camera Roll\(4. Right Video - Fortuner 2.mp4")
+camera0 = cv2.VideoCapture(0)
+camera1 = cv2.VideoCapture(1)
 
 # Folder untuk menyimpan capture
-capture_folder = "C:\clip-roof-toso\static\captures"
+capture_folder = "path_captures"
 
 capture_count = 1
 
